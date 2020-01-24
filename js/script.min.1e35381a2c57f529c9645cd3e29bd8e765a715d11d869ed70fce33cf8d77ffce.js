@@ -9,7 +9,7 @@ function hideMenu(){m.nav.removeClass('show');}
 function goTo(top){m.b.animate({scrollTop:top-menuOffset(top)});}
 function topA(name){return $('#'+name).offset().top;}
 $('a[href^="#"]',m.nav).click(function(){var name=$(this).attr('href').substr(1);if($(this).closest('#scribble').length){m.show(name);}else{goTo(topA(name));}
-hideMenu();return false;});$('#toggle').click(function(){m.nav.toggleClass('show');return false;});m.b.click(hideMenu);m.menuOffset=menuOffset;m.goTo=goTo;m.topA=topA;return m;})(M);var M=(function(m){'use strict';var nav=$('#nav'),articles=$('article').get().reverse(),currentArticle,navClear=true;function isNavClear(top){return top<=m.callDiv.offset().top-nav.height();}
+hideMenu();return false;});$('#toggle').click(function(){m.nav.toggleClass('show');return false;});m.b.click(hideMenu);m.menuOffset=menuOffset;m.goTo=goTo;m.topA=topA;return m;})(M);var M=(function(m){'use strict';var nav=$('nav'),articles=$('article').get().reverse(),currentArticle,navClear=true;function isNavClear(top){return top<=m.callDiv.offset().top-nav.height();}
 function setNavClear(top){if(isNavClear(top)!==navClear){navClear=!navClear;nav.toggleClass('top',navClear);nav.removeClass('show');}}
 function setNavColor(top){var i,article,newArticle=currentArticle;for(i=0;i<articles.length;i++){article=articles[i];if(top>=$(article).offset().top-m.menuOffset()){newArticle=$(article).attr('class')+'-nav';break;}}
 if(newArticle!==currentArticle){nav.addClass(newArticle);nav.removeClass(currentArticle);currentArticle=newArticle;}}
